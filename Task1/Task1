@@ -1,0 +1,54 @@
+/*Task 1: Console Information Program 
+Requirements 
+● Create variables to store: 
+○ full name (string) 
+○ email ID (string) 
+○ current year (number) 
+● Create at least two numeric variables. 
+● Perform at least five different mathematical operations using those 
+numbers 
+● Display all personal details using console.log(). 
+● Display the result of each mathematical operation using 
+console.log() with clear labels. */
+
+//Personal Details
+let fullName ="PETCHIAMMAL MURUGAN";
+let emailID ="petchiammal681@gmail.com";
+let currentYear = 2026;
+//Numeric Variables
+let birthYear = 2006;
+let luckyNumber = 22;
+//Mathematical Operations
+let age = currentYear - birthYear;
+let sum = birthYear + luckyNumber;
+let difference = birthYear - luckyNumber;
+let product = birthYear * luckyNumber;
+let division = birthYear / luckyNumber;
+let remainder = birthYear % luckyNumber;
+//Display all personal details using console.log().
+console.log("---PERSONAL DETAILS---");
+console.log("Full Name:", fullName);
+console.log("Email ID:", emailID);
+console.log("Current Year:", currentYear);
+//Display the result of each mathematical operations
+console.log("---MATH OPERATIONS---");
+console.log("Age:", age);
+console.log("Addition:", sum);
+console.log("substraction:", difference);
+console.log("multiplication:", product);
+console.log("Division:", division);
+console.log("Modulus:", remainder);
+
+
+//output:
+---PERSONAL DETAILS---
+VM2065:16 Full Name: PETCHIAMMAL MURUGAN
+VM2065:17 Email ID: petchiammal681@gmail.com
+VM2065:18 Current Year: 2026
+VM2065:20 ---MATH OPERATIONS---
+VM2065:21 Age: 20
+VM2065:22 Addition: 2028
+VM2065:23 substraction: 1984
+VM2065:24 multiplication: 44132
+VM2065:25 Division: 91.18181818181819
+VM2065:26 Modulus: 4
