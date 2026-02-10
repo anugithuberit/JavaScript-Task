@@ -1,0 +1,24 @@
+*/Task 3: Simple Interest Calculator  
+Requirements 
+● Create variables for: 
+○ principal amount (number) 
+○ rate of interest (number) 
+○ time period (number) 
+● Calculate simple interest using the formula: 
+○ (principal * rate * time) / 100 
+● Store the calculated interest in a variable. 
+● Display the final result using console.log() in sentence format.*/
+
+
+//Program
+
+let principal = 10000;
+let rate =5;
+let time = 2;
+let simpleInterest = (principal * rate * time)/100;
+console.log(`The simple Interest  is: ${simpleInterest}`);
+
+
+
+//Output
+The simple Interest  is: 1000
