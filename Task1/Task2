@@ -1,0 +1,38 @@
+\*Task 2: Arithmetic Operations Program  
+Requirements 
+● Create two numeric variables. 
+● Perform the following operations: 
+○ addition 
+○ subtraction 
+○ multiplication 
+○ division 
+○ modulus 
+○ power 
+● Store each operation result in a separate variable. 
+● Log each result to the console with a meaningful description.*/
+
+
+//Program
+let a = 20;
+let b = 5;
+let add = a+ b;
+let sub = a-b;
+let  mul = a*b;
+let div = a/b;
+let  mod = a%b;
+let power = a**b;
+console.log("Addition:", add);
+console.log("substraction:", sub);
+console.log("Multiplication:", mul);
+console.log("Division:", div);
+console.log("Modulus:", mod);
+console.log("Power:", power);
+
+
+//Output:
+Addition: 25
+VM3077:10 substraction: 15
+VM3077:11 Multiplication: 100
+VM3077:12 Division: 4
+VM3077:13 Modulus: 0
+VM3077:14 Power: 3200000
