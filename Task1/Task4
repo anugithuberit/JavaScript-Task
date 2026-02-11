@@ -1,0 +1,30 @@
+*/ Task 4: String  Processing Program   
+Requirements 
+● Create a variable to store a full name (string). 
+● Convert the string to uppercase and store the result. 
+● Convert the string to lowercase and store the result. 
+● Find and store the length of the string. 
+● Extract the first name from the full name. 
+● Log all results individually using console.log() with proper labels. */
+
+//Program:
+
+let name = "PETCHIAMMAL MURUGAN";
+let upperCaseName = name.toUpperCase();
+let lowerCaseName = name.toLowerCase();
+let nameLength = name.length;
+let firstName = name.split(" ")[0];
+
+console.log("Original Name:", name);
+console.log("Uppercase:", upperCaseName);
+console.log("Lowercase:", lowerCaseName);
+console.log("Length:", nameLength);
+console.log("First Name:", firstName);
+
+
+//Output:
+Original Name: PETCHIAMMAL MURUGAN
+VM1381:9 Uppercase: PETCHIAMMAL MURUGAN
+VM1381:10 Lowercase: petchiammal murugan
+VM1381:11 Length: 19
+VM1381:12 First Name: PETCHIAMMAL
