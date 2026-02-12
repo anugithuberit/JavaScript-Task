@@ -1,0 +1,1 @@
+Task 5: Template Literal Output Program Requirements ● Create variables to store: ○ name (string) ○ role (string) ○ organization or company name (string) ● Use template literals to generate a formatted introduction message.
