@@ -1,1 +1,17 @@
 Task 5: Template Literal Output Program Requirements ● Create variables to store: ○ name (string) ○ role (string) ○ organization or company name (string) ● Use template literals to generate a formatted introduction message.
+
+
+//PROGRAM
+
+let personName = "PETCHIAMMAL MURUGAN";
+let role = "Web Developer";
+let company = "Codem Inc";
+
+let message = `Hello, my name is ${personName}. I work as a ${role} at ${company}.`;
+
+console.log(message);
+
+
+//Output
+
+Hello, my name is PETCHIAMMAL MURUGAN. I work as a Web Developer at Codem Inc.
