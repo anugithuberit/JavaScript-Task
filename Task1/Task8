@@ -1,0 +1,17 @@
+*/Task 8: Student Marks Calculation Program Requirements ● Create variables to store marks of five subjects. ● Calculate the total marks and store the result. ● Calculate the average marks and store the result. ● Display total and average using template literals. ● Log the output to the console. Task 9: Email String Analyzer Program.*/
+
+//program
+let m1 = 85;
+let m2 = 90;
+let m3 = 88;
+let m4 = 92;
+let m5 = 80;
+let total = m1 + m2 + m3 + m4 + m5;
+let average = total / 5;
+console.log(`Total Marks: ${total}`);
+console.log(`Average Marks: ${average}`);
+
+
+//Output
+Total Marks: 435
+VM7818:10 Average Marks: 87
