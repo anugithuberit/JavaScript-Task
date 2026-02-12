@@ -1,0 +1,34 @@
+/*Task 10: JavaScript Utility Program (Programming Mandatory) Requirements ● Create variables to store: ○ user name (string) ○ age (number) ○ marks of five subjects (numbers) ● Calculate total marks. ● Calculate average marks. ● Convert the user name to uppercase. ● Find the length of the user name. ● Display all calculated and processed values using template literals and ● Log the final output using console.log().*/
+
+//program
+
+let userName = "PETCHIAMMAL MURUGAN";
+let ageUser = 21;
+
+let s1 = 80;
+let s2 = 85;
+let s3 = 78;
+let s4 = 90;
+let s5 = 88;
+
+let totalMarks = s1 + s2 + s3 + s4 + s5;
+let avgMarks = totalMarks / 5;
+
+let upperUserName = userName.toUpperCase();
+let userNameLength = userName.length;
+
+console.log(`User Name: ${userName}`);
+console.log(`Age: ${ageUser}`);
+console.log(`Total Marks: ${totalMarks}`);
+console.log(`Average Marks: ${avgMarks}`);
+console.log(`Uppercase Name: ${upperUserName}`);
+console.log(`Name Length: ${userNameLength}`);
+
+
+//Output
+User Name: PETCHIAMMAL MURUGAN
+VM8215:14 Age: 21
+VM8215:15 Total Marks: 421
+VM8215:16 Average Marks: 84.2
+VM8215:17 Uppercase Name: PETCHIAMMAL MURUGAN
+VM8215:18 Name Length: 19
