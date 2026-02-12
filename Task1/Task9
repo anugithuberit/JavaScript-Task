@@ -1,0 +1,15 @@
+/*Task 9: Email String Analyzer Program Requirements ● Create a variable to store an email address. ● Extract the username part from the email. ● Extract the domain name from the email. ● Store both values in separate variables. ● Log the username and domain separately using console.log().*/
+
+//program
+
+let email = "petchiammal681@gmail.com";
+let username = email.split("@")[0];
+let domain = email.split("@")[1];
+console.log("Username:", username);
+console.log("Domain:", domain);
+
+
+
+//Output
+Username: petchiammal681
+VM7920:6 Domain: gmail.com
