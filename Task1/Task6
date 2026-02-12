@@ -1,0 +1,21 @@
+/*Task 6: Variable Behavior Program Requirements ● Declare one variable using var. ● Declare one variable using let. ● Declare one variable using const. ● Attempt to reassign values to each variable. ● Attempt redeclaration where applicable. ● Log the results to the console. ● Add comments explaining the observed behavior. */
+
+
+//program
+var a=10;
+let b=20;
+const c=30;
+//reassigning
+a=15;
+b=25;
+//redeclaration
+var a =50;
+console.log("var a:",a);
+console.log("let b:", b);
+console.log("const c:", c);
+
+
+//output
+var a: 50
+VM464:11 let b: 25
+VM464:12 const c: 30
