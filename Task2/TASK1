@@ -1,0 +1,26 @@
+//TASK1-Login Access System
+function validateLogin(username,password){
+    if(password!="1234"){
+        return "Invalid credentials";
+    }
+    if(username==="admin"){
+        return "Full access granted";
+    }
+    else if(username==="user"){
+        return "Limited access granted";
+    }
+    else if(username==="guest"){
+        return "Read-only access";
+    }
+    else{
+        return "Invalid credentials";
+    }
+}
+console.log(validateLogin("admin","1234"));
+
+
+
+
+//OUTPUT
+
+Full access granted
