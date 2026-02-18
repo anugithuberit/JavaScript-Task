@@ -1,26 +1,59 @@
-//TASK1-Login Access System
-function validateLogin(username,password){
-    if(password!="1234"){
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Access System</title>
+</head>
+<body>
+
+<script>
+
+// Paste your JavaScript code here
+
+function validateLogin(username, password){
+    if(password != "1234"){
         return "Invalid credentials";
     }
-    if(username==="admin"){
+
+    if(username === "admin"){
         return "Full access granted";
     }
-    else if(username==="user"){
+    else if(username === "user"){
         return "Limited access granted";
     }
-    else if(username==="guest"){
+    else if(username === "guest"){
         return "Read-only access";
     }
     else{
         return "Invalid credentials";
     }
 }
-console.log(validateLogin("admin","1234"));
 
+let heading = document.createElement("h2");
+heading.innerText = "Login Access System";
+document.body.appendChild(heading);
 
+let adminBtn = document.createElement("button");
+adminBtn.innerText = "Admin";
+adminBtn.onclick = function(){
+    console.log(validateLogin("admin","1234"));
+};
+document.body.appendChild(adminBtn);
 
+let userBtn = document.createElement("button");
+userBtn.innerText = "User";
+userBtn.onclick = function(){
+    console.log(validateLogin("user","1234"));
+};
+document.body.appendChild(userBtn);
 
-//OUTPUT
+let guestBtn = document.createElement("button");
+guestBtn.innerText = "Guest";
+guestBtn.onclick = function(){
+    console.log(validateLogin("guest","1234"));
+};
+document.body.appendChild(guestBtn);
 
-Full access granted
+</script>
+
+</body>
+</html>
