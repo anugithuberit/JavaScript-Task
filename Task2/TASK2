@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Ticket Permission</title>
+</head>
+<body>
+
+<h2>Movie Ticket Permission</h2>
+
+<button onclick="console.log('Allowed')">
+    Adult
+</button>
+
+<button onclick="
+    let permission = confirm('Do you have parent permission?');
+    if (permission) {
+        console.log('Allowed');
+    } else {
+        console.log('Not Allowed');
+    }
+">
+    Teen
+</button>
+
+<button onclick="console.log('Allowed')">
+    Child
+</button>
+
+</body>
+</html>
