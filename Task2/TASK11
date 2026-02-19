@@ -1,0 +1,21 @@
+function checkWeather(condition, temperature){
+    var suggestion = "";
+    if(condition == "rainy"){
+        suggestion ="Carry an umberella";
+    }
+    else if(condition == "sunny"&& temperature>=35){
+        suggestion ="Stay hydrated and wear sunscreen";
+    }
+    else if(condition == "sunny"){
+        suggestion = "Enjoy the weather";
+    }
+    else{
+        suggestion = " Check weather updates";
+    }
+    alert(
+        "Weather:" +condition+
+        "\n Temperture:"+temperature + "C"+
+        "\n Suggestion :" +suggestion
+        );
+}
+checkWeather("sunny", 20);
