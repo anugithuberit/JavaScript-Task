@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Discount</title>
+</head>
+<body>
+<h2>Order & Discount Processor</h2>
+<button onclick="processOrder(1000, false, '')">Small Order</button>
+<button onclick="processOrder(2000, false, 'SAVE10')">Medium Order</button>
+<button onclick="processOrder(3500, true, '')">Large Order</button>
+<script>
+
+function processOrder(orderAmount, isMember, couponCode){
+    if(orderAmount <= 0){
+        alert("Invalid order amount");
+        return;
+    }
+    var discount = 0;
+    if(orderAmount >= 3000 || isMember){
+        discount = 20;
+    }
+    else if(orderAmount >= 1500 && couponCode == "SAVE10"){
+        discount = 10;
+    }
+    else if(couponCode == ""){
+        discount = 0;
+    }
+    else{
+        discount = 5;
+    }
+    var discountAmount = orderAmount * discount / 100;
+    var finalAmount = orderAmount - discountAmount;
+    alert("Order Amount: " + orderAmount +
+          "\nDiscount: " + discount + "%" +
+          "\nFinal Amount: " + finalAmount);
+}
+
+</script>
+
+</body>
+</html>
