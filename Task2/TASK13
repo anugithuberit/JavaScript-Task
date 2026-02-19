@@ -1,0 +1,10 @@
+function checkAppointment(dateAvailable, userConfirmed){
+    if(dateAvailable && userConfirmed){
+        alert ("Appointment Rejected");
+    }
+   
+    else{
+        alert("Appointment Confirmed");
+    }
+}
+checkAppointment(true, true);
