@@ -1,0 +1,19 @@
+function checkPaymentStatus(amount, isPaid, paymentMethod) {
+    let status;
+    if (amount <= 0) {
+        status = "Invalid payment amount";
+    }
+    else if (!isPaid) {
+        status = "Payment Pending";
+    }
+    else if (paymentMethod === "UPI" || paymentMethod === "Card") {
+        status = "Payment Successful";
+    }
+    else {
+        status = "Invalid payment method";
+    }
+    console.log("Payment Status:", status);
+    console.log("Amount:", amount);
+    console.log("Payment Method:", paymentMethod);
+}
+checkPaymentStatus(1500, true, "UPI");
