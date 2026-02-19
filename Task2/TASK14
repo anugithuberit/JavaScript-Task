@@ -1,0 +1,18 @@
+function filterNotification(message, isUrgent){
+    if(message.trim() == ""){
+        alert("Invalid notification");
+        return;
+    }
+    var type = "";
+    if(isUrgent || message.includes("alert") || message.includes("warning")){
+        type = "Important";
+    }
+    else{
+        type = "Normal";
+    }
+    alert(
+        "Notification Type: " + type +
+        "\nMessage: " + message
+        );
+}
+filterNotification("System alert detected", false);
