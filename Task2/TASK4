@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coin Toss Game</title>
+</head>
+<body>
+
+<h2>Coin Toss Game</h2>
+
+<button onclick="playGame('Heads')">Heads</button>
+<button onclick="playGame('Tails')">Tails</button>
+
+<script>
+
+function playGame(playerChoice){
+
+    // Generate random computer choice
+    let computerChoice = Math.random() < 0.5 ? "Heads" : "Tails";
+
+    let result;
+
+    if(playerChoice === computerChoice){
+        result = "Player Wins";
+    } else {
+        result = "Player Loses";
+    }
+
+    alert(
+        "Player Choice: " + playerChoice + "\n" +
+        "Computer Choice: " + computerChoice + "\n" +
+        "Result: " + result
+    );
+}
+
+</script>
+
+</body>
+</html>
