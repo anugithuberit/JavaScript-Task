@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Message Intent Detection</title>
+</head>
+<body>
+<h2>Message Intent Detection</h2>
+<button onclick="detectIntent('Why is this not working?')">
+Question + Complaint
+</button>
+<button onclick="detectIntent('There is a problem with my order')">
+Complaint
+</button>
+<button onclick="detectIntent('What is the price?')">
+Question
+</button>
+<button onclick="detectIntent('Hello there')">
+Other
+</button>
+<button onclick="detectIntent('   ')">
+Empty Message
+</button>
+<script>
+function detectIntent(message){
+    if(message.trim() == ""){
+        console.log("Invalid message");
+        return;
+    }
+    var isQuestion = message.includes("?");
+    var isComplaint = message.includes("problem") || 
+                      message.includes("not working");
+    var intent = "";
+    if(isQuestion && isComplaint){
+        intent = "Urgent request";
+    }
+    else if(isComplaint){
+        intent = "Complaint";
+    }
+    else if(isQuestion){
+        intent = "Question";
+    }
+    else{
+        intent = "Other";
+    }
+    console.log("Original Message:", message);
+    console.log("Detected Intent:", intent);
+}
+</script>
+</body>
+</html>
