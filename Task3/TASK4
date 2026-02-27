@@ -1,0 +1,13 @@
+//task4: looping through student marks
+let studentMarks ={
+Anu:85,
+Raji:40,
+Ragav:65,
+Pranav:30
+};
+let passMark = 50;
+for (let student in studentMarks){
+let mark = studentMarks[student];
+let status = mark>=passMark?"Pass":"Fail";
+console.log(`Name:${student},Mark:${mark}, status:${status}`);
+}
