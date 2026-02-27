@@ -1,0 +1,11 @@
+//TASK5:OBJECT METHODS USING THIS
+let employee = {
+name: "PETCHIAMMAL",
+salary:40000,
+increaseSalary:function(amount){
+this.salary+=amount;
+console.log("Updated Salary:", this.salary);
+}
+};
+employee.increaseSalary(5000);
+console.log("Final Employee Object:", employee);
