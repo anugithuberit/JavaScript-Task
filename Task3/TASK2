@@ -1,0 +1,17 @@
+//task2:functiom modifying san object
+let product = {
+name:"Laptop",
+price:50000,
+stock: 10,
+};
+function updateProduct(prod){
+prod.price = prod.price+5000;
+prod.stock = prod.stock - 2;
+return `updated product details:
+Name:${prod.name}
+Price:${prod.price}
+Stock:${prod.stock}`;
+}
+let summary = updateProduct(product);
+console.log(summary);
+console.log("Original Object After Update:",product);
