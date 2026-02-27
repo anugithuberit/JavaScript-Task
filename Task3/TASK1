@@ -1,0 +1,22 @@
+let userProfile={
+    name:"PETCHIAMMAL",
+    age:21,
+    email:"petchi@gmail.com",
+    isActive:true
+};
+//using dot
+userProfile.name = "PETCHIAMMAL MURUGAN";
+userProfile.age = 22;
+//using bracket
+userProfile["email"] = "petchimurugan@gmail.com";
+userProfile["isActive"] = false;
+//add new property
+userProfile["role"] = "Frontend developer";
+//display
+console.log("updated user profile object:", userProfile);
+console.log("name:",userProfile.name);
+console.log("Age:",userProfile.age);
+console.log("Email:",userProfile.email);
+console.log("Is Active:", userProfile.isActive);
+console.log("Role:", userProfile.role);
+    
