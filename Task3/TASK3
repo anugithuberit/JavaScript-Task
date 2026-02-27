@@ -1,0 +1,13 @@
+//Task3:nested shopping cart object
+let cart = {
+items:[
+{name:"Phone", price:20000, qunatity:2},
+{name:"Headphones", price:2000, quantity:3},
+{name:"Charger", price:1000, quantity:1}
+]
+};
+let totalPrice=0;
+for(let i=0;i<cart.items.length;i++){
+totalPrice += cart.items[i].price*cart.items[i].quantity;
+}
+console.log("Total cart price:", totalPrice);
