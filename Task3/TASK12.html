@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form id="myForm">
+  <input type="text" id="username" placeholder="Username">
+  <span id="userError" style="color:red"></span>
+  <br><br>
+
+  <input type="email" id="email" placeholder="Email">
+  <span id="emailError" style="color:red"></span>
+  <br><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+let form = document.getElementById("myForm");
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  let username = document.getElementById("username").value.trim();
+  let email = document.getElementById("email").value.trim();
+
+  let userError = document.getElementById("userError");
+  let emailError = document.getElementById("emailError");
+
+  userError.textContent = "";
+  emailError.textContent = "";
+
+  let isValid = true;
+
+  if (username === "") {
+    userError.textContent = "Username is required";
+    isValid = false;
+  }
+
+  if (email === "") {
+    emailError.textContent = "Email is required";
+    isValid = false;
+  }
+
+  if (isValid) {
+    alert("Form submitted successfully!");
+  }
+});
+</script>
+
+</body>
+</html>

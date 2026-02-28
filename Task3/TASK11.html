@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button class="btn">Button 1</button>
+<button class="btn">Button 2</button>
+<button class="btn">Button 3</button>
+
+<p id="output"></p>
+
+<script>
+let buttons = document.querySelectorAll(".btn");
+let output = document.getElementById("output");
+
+buttons.forEach(function(button) {
+  button.addEventListener("click", function(event) {
+    output.textContent =
+      "Clicked: " + event.target.textContent +
+      " | Event Type: " + event.type;
+  });
+});
+</script>
+
+</body>
+</html>
