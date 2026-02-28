@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="container"></div>
+
+<script>
+let students = [
+  { name: "Anu", mark: 85 },
+  { name: "Raji", mark: 40 },
+  { name: "Ragav", mark: 65 }
+];
+
+let container = document.getElementById("container");
+let ul = document.createElement("ul");
+
+students.forEach(function(student) {
+  let li = document.createElement("li");
+  li.textContent = "Name: " + student.name + ", Mark: " + student.mark;
+  ul.appendChild(li);
+});
+
+container.appendChild(ul);
+</script>
+
+</body>
+</html>
