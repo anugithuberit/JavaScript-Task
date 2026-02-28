@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.error { border: 2px solid red; }
+</style>
+</head>
+<body>
+
+<input type="text" id="name" placeholder="Name">
+<span id="msg"></span>
+
+<script>
+let nameInput = document.getElementById("name");
+
+nameInput.addEventListener("input", function() {
+  if (nameInput.value.trim() === "") {
+    nameInput.classList.add("error");
+    document.getElementById("msg").textContent = "Required";
+  } else {
+    nameInput.classList.remove("error");
+    document.getElementById("msg").textContent = "";
+  }
+});
+</script>
+
+</body>
+</html>

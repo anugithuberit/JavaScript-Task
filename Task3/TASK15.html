@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Simple To-Do List</h3>
+
+<div id="app"></div>
+
+<script>
+// Store tasks
+let todoData = {
+  tasks: []
+};
+
+// Create elements
+let app = document.getElementById("app");
+
+let input = document.createElement("input");
+input.placeholder = "Enter task";
+
+let addButton = document.createElement("button");
+addButton.textContent = "Add";
+
+let list = document.createElement("ul");
+
+app.appendChild(input);
+app.appendChild(addButton);
+app.appendChild(list);
+
+// Add task
+addButton.addEventListener("click", function () {
+
+  let taskText = input.value.trim();
+
+  if (taskText === "") {
+    alert("Please enter a task");
+    return;
+  }
+
+  // Add to object
+  let task = { text: taskText, completed: false };
+  todoData.tasks.push(task);
+
+  // Create list item
+  let li = document.createElement("li");
+  li.textContent = task.text;
+
+  // Mark complete
+  li.addEventListener("click", function () {
+    task.completed = !task.completed;
+    li.style.textDecoration = task.completed ? "line-through" : "none";
+  });
+
+  // Remove button
+  let removeBtn = document.createElement("button");
+  removeBtn.textContent = "Remove";
+
+  removeBtn.addEventListener("click", function () {
+    list.removeChild(li);
+    todoData.tasks = todoData.tasks.filter(t => t !== task);
+  });
+
+  li.appendChild(removeBtn);
+  list.appendChild(li);
+
+  input.value = "";
+});
+</script>
+
+</body>
+</html>
