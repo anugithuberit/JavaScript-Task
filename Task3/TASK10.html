@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button id="toggleBtn">Toggle Image</button>
+<br><br>
+<img id="myImage" src="C:\Users\petch\Downloads\codem task-20260228T075114Z-3-001\codem task\Fronalpstock_big.jpg" width="500">
+
+<script>
+let button = document.getElementById("toggleBtn");
+let image = document.getElementById("myImage");
+
+button.addEventListener("click", function() {
+  if (image.hasAttribute("hidden")) {
+    image.removeAttribute("hidden");
+    console.log("Image is visible");
+  } else {
+    image.setAttribute("hidden", "true");
+    console.log("Image is hidden");
+  }
+});
+</script>
+
+</body>
+</html>

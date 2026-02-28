@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="parent">
+  Parent
+  <p id="child">Child</p>
+  <span>Sibling</span>
+</div>
+
+<script>
+let child = document.getElementById("child");
+
+let parent = child.parentElement;
+parent.style.backgroundColor = "lightyellow";
+
+child.textContent = "Updated Child";
+
+let sibling = child.nextElementSibling;
+sibling.style.color = "green";
+sibling.textContent = "Updated Sibling";
+</script>
+
+</body>
+</html>
