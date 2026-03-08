@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Sorting Visualizer</h2>
+
+<div id="numberList"></div>
+<br>
+<button onclick="startSort()">Start Sorting</button>
+
+<script>
+
+// 1. Array with random numbers
+let numbers = [5, 2, 4, 1, 3,8,7,9];
+
+// 2. Display numbers
+function showNumbers(){
+    let container = document.getElementById("numberList");
+    container.innerHTML = "";
+
+    for(let i = 0; i < numbers.length; i++){
+        container.innerHTML += numbers[i] + " ";
+    }
+}
+
+// 3. Bubble sort with visual steps
+function startSort(){
+
+    let steps = [];
+    steps.push([...numbers]); // store first step
+
+    // Bubble sort
+    for(let i = 0; i < numbers.length; i++){
+        for(let j = 0; j < numbers.length - i - 1; j++){
+
+            if(numbers[j] > numbers[j+1]){
+
+                // swap
+                let temp = numbers[j];
+                numbers[j] = numbers[j+1];
+                numbers[j+1] = temp;
+
+                // store step
+                steps.push([...numbers]);
+            }
+
+        }
+    }
+
+    showSteps(steps);
+}
+
+// 4. Show each step in DOM
+function showSteps(steps){
+
+    let container = document.getElementById("numberList");
+    container.innerHTML = "";
+
+    for(let i = 0; i < steps.length; i++){
+
+        container.innerHTML += steps[i].join(" ") + "<br>";
+
+    }
+}
+
+// Initial display
+showNumbers();
+
+</script>
+
+</body>
+</html>

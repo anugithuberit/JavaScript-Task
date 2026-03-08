@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK4</title>
+</head>
+<body>
+    <h2>Duplicate Highlighter</h2>
+    <ul id="list"></ul>
+    <script>
+        //array of items
+        let items = ["apple","banana","apple","orange","banana","grape"];
+        //function to display items
+        function showItems(){
+            let list = document.getElementById("list");
+            list.innerHTML ="";
+            for(let i=0; i<items.length; i++){
+                let count = 0;
+                //check duplicates using loop
+                for (let j=0; j<items.length; j++){
+                    if(items[i]===items[j]){
+                        count++;
+                    }
+                }
+                let li = document.createElement("li");
+                li.textContent = items[i];
+                //highlighted duplicates
+                if(count>1){
+                    li.style.backgroundColor="yellow";
+                    li.style.color="red";
+                }
+                list.appendChild(li);
+            }
+        }
+        //display lsit
+        showItems();
+    </script>
+</body>
+</html>

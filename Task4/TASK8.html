@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK8</title>
+</head>
+<body>
+    <h2>Attendance Tracker</h2>
+    <div id="studentList"></div>
+    <p id="summary"></p>
+    <script>
+        //1. Array of students
+        let students=[
+            {name:"anu", present:true},
+            {name:"ali", present:false},
+            {name:"sara", present:true},
+            {name:"john", present:false}
+        ];
+        //functions to disply students
+        function showStudents(){
+            let container = document.getElementById("studentList");
+            container.innerHTML ="";
+            let presentCount =0;
+            let absentCount =0;
+            //loop through students
+            for(let i=0;i<students.length;i++){
+                let status = students[i].present ? "Present":"Absent";
+                if(students[i].present){
+                    presentCount++;
+                }else{
+                    absentCount++;
+                }
+                container.innerHTML +=
+                students[i].name +"-"+status +
+                " <button onclick='toggleAttendance("+i+")'>Toggle</button><br><br>";
+            }
+            //display totals
+            document.getElementById("summary").innerHTML =
+            "Present:" +presentCount + "| Absent:" +absentCount;
+        }
+        //3.Toggle attendance
+        function toggleAttendance(index){
+            students[index].present =!students[index].present;
+            showStudents();
+        }
+        //initial display
+        showStudents();
+    </script>
+</body>
+</html>

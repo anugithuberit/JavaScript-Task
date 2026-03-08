@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK9</title>
+</head>
+<body>
+    <h2>Inventory Manager</h2>
+    <div id="inventoryList"></div>
+    <script>
+        //1.Inventory array
+        let inventory = [
+            {product:"Pen", quantity:10},
+            {product:"Notebook", quantity:5},
+            {product:"Eraser", quantity:0}
+        ];
+        //function to display inventory
+        function showInventory(){
+            let container = document.getElementById("inventoryList");
+            container.innerHTML = "";
+            //loop through inventory
+            for(let i=0; i<inventory.length;i++){
+                container.innerHTML +=
+                inventory[i].product + "-Quantity:"+inventory[i].quantity +
+                "<button onclick='increase("+i+")'>Increase</button>"+
+                "<button onclick='decrease("+i+")'>Decrease</button><br><br>";
+            }
+        }
+        //increase quantity
+        function increase(index){
+            inventory[index].quantity++;
+            showInventory();
+        }
+        //decrease quantity
+        function decrease(index){
+            if(inventory[index].quantity>0){
+                inventory[index].quantity--;
+            }
+            showInventory();
+        }
+        //initial display
+        showInventory();
+    </script>
+</body>
+</html>

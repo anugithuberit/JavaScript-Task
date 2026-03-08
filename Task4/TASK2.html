@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Product List</h2>
+
+<!-- Filters -->
+Category:
+<select id="category">
+  <option value="All">All</option>
+  <option value="Electronics">Electronics</option>
+  <option value="Clothing">Clothing</option>
+</select>
+
+Min Price:
+<input type="number" id="minPrice">
+
+Max Price:
+<input type="number" id="maxPrice">
+
+<button onclick="filterProducts()">Filter</button>
+
+<br><br>
+
+<!-- Product Display -->
+<div id="productList"></div>
+
+<p id="message"></p>
+
+<script>
+
+// 1. Products array
+let products = [
+  { name: "Laptop", price: 50000, category: "Electronics" },
+  { name: "Phone", price: 20000, category: "Electronics" },
+  { name: "Shirt", price: 1200, category: "Clothing" },
+  { name: "Jeans", price: 2500, category: "Clothing" }
+];
+
+// Function to display products
+function displayProducts(list) {
+
+  let container = document.getElementById("productList");
+  container.innerHTML = "";
+  document.getElementById("message").textContent = "";
+
+  if (list.length === 0) {
+    document.getElementById("message").textContent = "No products found";
+    return;
+  }
+
+  for (let i = 0; i < list.length; i++) {
+
+    let div = document.createElement("div");
+
+    div.innerHTML =
+      list[i].name + " - ₹" + list[i].price + " (" + list[i].category + ")";
+
+    container.appendChild(div);
+  }
+}
+
+// Filter function
+function filterProducts() {
+
+  let category = document.getElementById("category").value;
+  let min = document.getElementById("minPrice").value;
+  let max = document.getElementById("maxPrice").value;
+
+  let filtered = [];
+
+  for (let i = 0; i < products.length; i++) {
+
+    let product = products[i];
+
+    let categoryMatch =
+      category === "All" || product.category === category;
+
+    let minMatch =
+      min === "" || product.price >= min;
+
+    let maxMatch =
+      max === "" || product.price <= max;
+
+    if (categoryMatch && minMatch && maxMatch) {
+      filtered.push(product);
+    }
+  }
+
+  displayProducts(filtered);
+}
+
+// Initial display
+displayProducts(products);
+
+</script>
+
+</body>
+</html>

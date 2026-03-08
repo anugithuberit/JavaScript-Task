@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Manual Pagination</h2>
+
+<div id="items"></div>
+
+<br>
+
+<button id="prevBtn" onclick="previousPage()">Previous</button>
+<button id="nextBtn" onclick="nextPage()">Next</button>
+
+<script>
+
+// 1. Array with 20 items
+let allItems = [
+1,2,3,4,5,6,7,8,9,10,
+11,12,13,14,15,16,17,18,19,20
+];
+
+let currentPage = 1;
+let itemsPerPage = 5;
+
+// Function to display items
+function showItems() {
+
+  let container = document.getElementById("items");
+  container.innerHTML = "";
+
+  let start = (currentPage - 1) * itemsPerPage;
+  let end = start + itemsPerPage;
+
+  // 5. Use loop to display items
+  for (let i = start; i < end && i < allItems.length; i++) {
+    container.innerHTML += allItems[i] + " ";
+  }
+
+  // 6. Disable buttons when needed
+  document.getElementById("prevBtn").disabled = currentPage === 1;
+  document.getElementById("nextBtn").disabled =
+    end >= allItems.length;
+}
+
+// Next page
+function nextPage() {
+  currentPage++;
+  showItems();
+}
+
+// Previous page
+function previousPage() {
+  currentPage--;
+  showItems();
+}
+
+// Initial display
+showItems();
+
+</script>
+
+</body>
+</html>

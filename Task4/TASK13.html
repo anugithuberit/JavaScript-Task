@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Comment System</h2>
+
+<div id="app"></div>
+
+<script>
+
+// 1. Empty comments array
+let comments = [];
+
+// Create input and button using DOM
+let container = document.getElementById("app");
+
+container.innerHTML =
+"<input type='text' id='commentInput' placeholder='Enter comment'>" +
+"<button onclick='addComment()'>Submit</button>" +
+"<h3>Comments</h3>" +
+"<div id='commentList'></div>";
+
+// Function to display comments
+function showComments(){
+
+let list = document.getElementById("commentList");
+list.innerHTML = "";
+
+// 3. If no comments
+if(comments.length === 0){
+list.innerHTML = "No Comments In the Array";
+return;
+}
+
+// Show latest 5 comments (newest first)
+let count = 0;
+
+for(let i = comments.length - 1; i >= 0 && count < 5; i--){
+
+list.innerHTML += comments[i] + "<br><br>";
+count++;
+
+}
+
+}
+
+// 4. Add comment
+function addComment(){
+
+let text = document.getElementById("commentInput").value;
+
+if(text !== ""){
+comments.push(text);
+}
+
+document.getElementById("commentInput").value = "";
+
+showComments();
+
+}
+
+// Initial display
+showComments();
+
+</script>
+
+</body>
+</html>

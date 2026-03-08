@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK6</title>
+</head>
+<body>
+    <h2>Search + Highlight</h2>
+    <input type="text" id="searchBox" placeholder="Search..." onkeyup="searchText()">
+    <ul id="list"></ul>
+    <p id="message"></p>
+    <script>
+        //1. Array of texts
+        let texts =["javascript","java","python","react"];
+        //functions to display list
+        function showlist(list){
+            let ul = document.getElementById("list");
+            ul.innerHTML ="";
+            document.getElementById("message").textContent="";
+            if(list.length === 0){
+                document.getElementById("message").textContent="No results found.";
+                return;
+            }
+            //2.Display items using loops
+            for(let i=0; i<list.length; i++){
+                let li= document.createElement("li");
+                li.textContent = list[i];
+                ul.appendChild(li);
+            }
+        }
+        //4.sercg fucntion
+        function searchText(){
+            let search = document.getElementById("searchBox").value.toLowerCase();
+            let results = [];
+            //loop to check matches
+            for (let i=0;i<texts.length; i++){
+                if(texts[i].toLowerCase().includes(search)){
+                    results.push(texts[i]);
+                }
+            }
+            //5.display matching results
+            showlist(results);
+        }
+        //initial display
+        showlist(texts);
+    </script>
+</body>
+</html>

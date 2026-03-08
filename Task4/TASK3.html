@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>User Table</h2>
+
+<div id="table"></div>
+
+<script>
+
+// 1. Users array
+let users = [
+  { name: "Ali", age: 22, email: "ali@mail.com" },
+  { name: "Sara", age: 25, email: "sara@mail.com" }
+];
+
+// Function to render table
+function renderTable() {
+
+  let container = document.getElementById("table");
+
+  let html = "<table border='1'>";
+  html += "<tr><th>Name</th><th>Age</th><th>Email</th><th>Action</th></tr>";
+
+  for (let i = 0; i < users.length; i++) {
+
+    html += "<tr>";
+    html += "<td>" + users[i].name + "</td>";
+    html += "<td>" + users[i].age + "</td>";
+    html += "<td>" + users[i].email + "</td>";
+    html += "<td><button onclick='editUser(" + i + ")'>Edit</button></td>";
+    html += "</tr>";
+  }
+
+  html += "</table>";
+
+  container.innerHTML = html;
+}
+
+// Edit function
+function editUser(index) {
+
+  let container = document.getElementById("table");
+
+  let html = "<table border='1'>";
+  html += "<tr><th>Name</th><th>Age</th><th>Email</th><th>Action</th></tr>";
+
+  for (let i = 0; i < users.length; i++) {
+
+    if (i === index) {
+
+      html += "<tr>";
+      html += "<td><input id='nameInput' value='" + users[i].name + "'></td>";
+      html += "<td><input id='ageInput' value='" + users[i].age + "'></td>";
+      html += "<td>" + users[i].email + "</td>";
+      html += "<td><button onclick='saveUser(" + i + ")'>Save</button></td>";
+      html += "</tr>";
+
+    } else {
+
+      html += "<tr>";
+      html += "<td>" + users[i].name + "</td>";
+      html += "<td>" + users[i].age + "</td>";
+      html += "<td>" + users[i].email + "</td>";
+      html += "<td><button onclick='editUser(" + i + ")'>Edit</button></td>";
+      html += "</tr>";
+    }
+
+  }
+
+  html += "</table>";
+
+  container.innerHTML = html;
+}
+
+// Save function
+function saveUser(index) {
+
+  let newName = document.getElementById("nameInput").value;
+  let newAge = document.getElementById("ageInput").value;
+
+  // Update array
+  users[index].name = newName;
+  users[index].age = newAge;
+
+  // Re-render table
+  renderTable();
+}
+
+// Initial render
+renderTable();
+
+</script>
+
+</body>
+</html>

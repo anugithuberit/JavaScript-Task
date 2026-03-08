@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Price Calculator</h2>
+
+<div id="priceList"></div>
+<p id="result"></p>
+
+<script>
+
+// 1. Prices array
+let prices = [100, 200, 300];
+
+// Function to calculate price
+function calculatePrice(){
+
+let container = document.getElementById("priceList");
+container.innerHTML = "";
+
+let total = 0;
+
+// 2. Display prices and calculate total
+for(let i = 0; i < prices.length; i++){
+
+container.innerHTML += "Price: " + prices[i] + "<br>";
+total += prices[i];
+
+}
+
+// 3. Apply tax and discount
+let tax = total * 0.10;
+let afterTax = total + tax;
+
+let discount = total * 0.05;
+let final = afterTax - discount;
+
+// 5. Display result
+document.getElementById("result").innerHTML =
+"Total: " + total + "<br>" +
+"Tax (10%): " + tax + "<br>" +
+"After Tax: " + afterTax + "<br>" +
+"Discount (5%): " + discount + "<br>" +
+"Final Price: " + final;
+
+}
+
+// Run calculation
+calculatePrice();
+
+</script>
+
+</body>
+</html>

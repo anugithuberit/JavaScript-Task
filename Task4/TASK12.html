@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Quiz Engine</h2>
+
+<div id="quizBox"></div>
+
+<p id="score"></p>
+
+<script>
+
+// 1. Quiz array
+let quiz = [
+{
+question: "What is JavaScript?",
+options: ["Language", "Framework", "Database"],
+answer: "Language"
+},
+{
+question: "Which keyword declares a variable?",
+options: ["var", "loop", "print"],
+answer: "var"
+}
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+// 2. Display question
+function showQuestion(){
+
+let container = document.getElementById("quizBox");
+
+if(currentQuestion >= quiz.length){
+container.innerHTML = "Quiz Finished!";
+document.getElementById("score").innerHTML = "Final Score: " + score;
+return;
+}
+
+let q = quiz[currentQuestion];
+
+container.innerHTML = "<h3>" + q.question + "</h3>";
+
+for(let i = 0; i < q.options.length; i++){
+
+container.innerHTML +=
+"<button onclick=\"checkAnswer('" + q.options[i] + "')\">" +
+q.options[i] +
+"</button><br><br>";
+
+}
+
+}
+
+// 3. Check answer
+function checkAnswer(selected){
+
+if(selected === quiz[currentQuestion].answer){
+score++;
+}
+
+currentQuestion++;
+
+showQuestion();
+
+}
+
+// Start quiz
+showQuestion();
+
+</script>
+
+</body>
+</html>

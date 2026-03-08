@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Password Rule Checker</h2>
+
+<div id="app"></div>
+
+<script>
+
+// 2. Rules array
+let rules = [
+{ rule: "Minimum 8 characters", isPassed: false },
+{ rule: "At least one uppercase letter", isPassed: false },
+{ rule: "At least one number", isPassed: false },
+{ rule: "At least one special character", isPassed: false }
+];
+
+// Create input using DOM
+let container = document.getElementById("app");
+
+container.innerHTML =
+"<input type='password' id='passwordInput' onkeyup='checkPassword()' placeholder='Enter Password'><br><br>" +
+"<div id='ruleList'></div>";
+
+// 3. Check password rules
+function checkPassword(){
+
+let password = document.getElementById("passwordInput").value;
+
+let failedRules = [];
+
+// Check rules
+rules[0].isPassed = password.length >= 8;
+rules[1].isPassed = /[A-Z]/.test(password);
+rules[2].isPassed = /[0-9]/.test(password);
+rules[3].isPassed = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+// Display rules
+let list = document.getElementById("ruleList");
+list.innerHTML = "";
+
+// 5. Show passed / failed rules
+for(let i = 0; i < rules.length; i++){
+
+if(rules[i].isPassed){
+list.innerHTML += "✅ " + rules[i].rule + "<br>";
+}else{
+list.innerHTML += "❌ " + rules[i].rule + "<br>";
+failedRules.push(rules[i].rule);
+}
+
+}
+
+console.log("Failed Rules:", failedRules);
+
+}
+
+</script>
+
+</body>
+</html>

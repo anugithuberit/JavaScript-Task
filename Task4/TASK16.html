@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Color Pattern Generator</h2>
+
+<div id="grid"></div>
+
+<script>
+
+// 1. Colors array
+let colors = ["red", "blue", "green", "yellow"];
+
+// Grid size
+let rows = 3;
+let cols = 3;
+
+// Function to generate grid
+function createGrid(){
+
+let container = document.getElementById("grid");
+container.innerHTML = "";
+
+let colorIndex = 0;
+
+// 4. Nested loops for rows and columns
+for(let i = 0; i < rows; i++){
+
+    for(let j = 0; j < cols; j++){
+
+        container.innerHTML +=
+        "<div style='width:80px;height:80px;display:inline-block;margin:2px;background:"
+        + colors[colorIndex] + "'></div>";
+
+        // move to next color
+        colorIndex++;
+
+        // repeat pattern
+        if(colorIndex >= colors.length){
+            colorIndex = 0;
+        }
+
+    }
+
+    container.innerHTML += "<br>";
+
+}
+
+}
+
+// Display grid
+createGrid();
+
+</script>
+
+</body>
+</html>

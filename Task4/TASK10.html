@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK10</title>
+</head>
+<body>
+    <h2>Live Character Counter</h2>
+    <div id="app"></div>
+    <script>
+        //1. Empty array to store inputs
+        let inputs =[];
+        //create textarea and button using DOM
+        let container = document.getElementById("app");
+        container.innerHTML = 
+        "<textarea id='textInput' onkeyup = 'countChars()'></textarea><br><br>"+
+        "<button onclick='submitText()'>Submit</button>"+
+        "<p id='charCount'>Characters:0</p>"+
+        "<p id='longest'>Longest Input:</p>";
+        //Live character count
+        function countChars(){
+            let text =document.getElementById("textInput").value;
+            document.getElementById("charCount").innerHTML =
+            "Characters:"+text.length;
+        }
+        //store input on submit
+        function submitText(){
+            let text = document.getElementById("textInput").value;
+            if(text !==""){
+                inputs.push(text);
+            }
+            //find longest input using loop
+            let longest = "";
+            for(let i=0; i<inputs.length; i++){
+                if(inputs[i].length>longest.length){
+                    longest = inputs[i];
+                }
+            }
+            document.getElementById("longest").innerHTML =
+            "Longest Input:"+longest;
+            console.log(inputs);
+        }
+    </script>
+</body>
+</html>

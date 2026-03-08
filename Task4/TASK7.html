@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Dynamic Form Builder</h2>
+
+<div id="formContainer"></div>
+
+<br>
+<button onclick="submitForm()">Submit</button>
+
+<p id="result"></p>
+
+<script>
+
+// 1. Array describing form fields
+let fields = [
+  { type: "text", label: "Name" },
+  { type: "email", label: "Email" },
+  { type: "number", label: "Age" }
+];
+
+// Display form using loop
+let container = document.getElementById("formContainer");
+
+for (let i = 0; i < fields.length; i++) {
+
+  container.innerHTML +=
+    "<label>" + fields[i].label + "</label><br>" +
+    "<input type='" + fields[i].type + "' id='field" + i + "'><br><br>";
+
+}
+
+// 2. Form submission
+function submitForm() {
+
+  let formData = [];
+
+  // Read all values using loop
+  for (let i = 0; i < fields.length; i++) {
+
+    let value = document.getElementById("field" + i).value;
+    formData.push(value);
+
+  }
+
+  // Show stored data
+  document.getElementById("result").innerHTML = "Form Data: " + formData.join(", ");
+
+  console.log(formData);
+}
+
+</script>
+
+</body>
+</html>
