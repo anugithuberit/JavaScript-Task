@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Password Validation</h2>
+
+<form onsubmit="return validatePassword()">
+
+Password: <input type="password" id="password"><br><br>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<script>
+
+function validatePassword(){
+
+let password = document.getElementById("password").value;
+
+// Check password length
+if(password.length >= 8){
+
+    console.log("Password is valid");
+    return true;
+
+}else{
+
+    console.log("Password must be at least 8 characters");
+    return false;
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

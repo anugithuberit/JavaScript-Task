@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Form Validation</h2>
+
+<form onsubmit="return validateForm()">
+
+Name: <input type="text" id="name"><br><br>
+
+Email: <input type="text" id="email"><br><br>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<script>
+
+function validateForm(){
+
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+
+// Check if fields are empty
+if(name === ""){
+    console.log("Name field is empty");
+    return false;
+}
+
+if(email === ""){
+    console.log("Email field is empty");
+    return false;
+}
+
+console.log("Form submitted successfully");
+
+return true;
+
+}
+
+</script>
+
+</body>
+</html>

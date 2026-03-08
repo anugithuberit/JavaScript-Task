@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+
+// Function with default discount percentage
+function calculateDiscount(price, discount = 10){
+
+    let discountAmount = (price * discount) / 100;
+    let finalPrice = price - discountAmount;
+
+    return finalPrice;
+}
+
+// Call function with discount value
+let result1 = calculateDiscount(1000, 20);
+
+// Call function without passing discount (uses default)
+let result2 = calculateDiscount(1000);
+
+// Display results
+console.log("Final Price with 20% Discount:", result1);
+console.log("Final Price with Default Discount:", result2);
+
+</script>
+
+</body>
+</html>

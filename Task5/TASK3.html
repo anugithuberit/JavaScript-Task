@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+
+// Function that accepts a number and a callback
+function processNumber(num, callback){
+    return callback(num);
+}
+
+// Callback function to double a number
+function doubleNumber(n){
+    return n * 2;
+}
+
+// Callback function to halve a number
+function halfNumber(n){
+    return n / 2;
+}
+
+// Call processNumber with callbacks
+let result1 = processNumber(10, doubleNumber);
+let result2 = processNumber(10, halfNumber);
+
+// Display results
+console.log("Double Result:", result1);
+console.log("Half Result:", result2);
+
+</script>
+
+</body>
+</html>
