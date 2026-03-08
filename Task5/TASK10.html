@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Form Validation</h2>
+
+<form onsubmit="return mainValidation()">
+
+Name: <input type="text" id="name"><br><br>
+
+Email: <input type="text" id="email"><br><br>
+
+Password: <input type="password" id="password"><br><br>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<script>
+
+// Function to check empty input
+function checkEmpty(value){
+    if(value === ""){
+        return true;
+    }
+    return false;
+}
+
+// Function to validate email format
+function validateEmail(email){
+    if(email.includes("@") && email.includes(".")){
+        return true;
+    }
+    return false;
+}
+
+// Function to validate password length
+function validatePassword(password){
+    if(password.length >= 8){
+        return true;
+    }
+    return false;
+}
+
+// Main validation function
+function mainValidation(){
+
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let password = document.getElementById("password").value;
+
+// Check empty inputs
+if(checkEmpty(name)){
+    console.log("Name field is empty");
+    return false;
+}
+
+if(checkEmpty(email)){
+    console.log("Email field is empty");
+    return false;
+}
+
+if(checkEmpty(password)){
+    console.log("Password field is empty");
+    return false;
+}
+
+// Validate email format
+if(!validateEmail(email)){
+    console.log("Invalid email format");
+    return false;
+}
+
+// Validate password length
+if(!validatePassword(password)){
+    console.log("Password must be at least 8 characters");
+    return false;
+}
+
+console.log("Form submitted successfully");
+return true;
+
+}
+
+</script>
+
+</body>
+</html>
