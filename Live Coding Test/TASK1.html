@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TASK1</title>
+</head>
+<body>
+    <h1>student mark analyzer</h1>
+    <script>
+        const students = [
+  { name: "Alice", marks: 80 },
+  { name: "Bob", marks: 45 },
+  { name: "Charlie", marks: 60 },
+  { name: "David", marks: 30 },
+  { name: "Eva", marks: 90 }
+];
+function analyzeStudents(students) {
+  let totalMarks = 0;
+  let highestMarks = 0;
+  let topper = "";
+  let failedStudents = [];
+  let passCount = 0;
+  for (let student of students) {
+    totalMarks += student.marks;
+    if (student.marks > highestMarks) {
+      highestMarks = student.marks;
+      topper = student.name;
+    }
+    if (student.marks < 50) {
+      failedStudents.push(student.name);
+    } else {
+      passCount++;
+    }
+  }
+  let average = Math.round(totalMarks / students.length);
+  return {
+    average: average,
+    topper: topper,
+    failedStudents: failedStudents,
+    passCount: passCount
+  };
+}
+console.log(analyzeStudents(students));
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
