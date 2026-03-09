@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK2</title>
+</head>
+<body>
+    <h2>shopping cart </h2>
+    <script>
+        const cart =[
+{ item:"Laptop", price:"50000", quantity:1 },
+{item:"Phone", price:"20000", quantity:2},
+{item:"Headphones", price:"3000", quantity:3}
+];
+function calculateCart(cart) {
+  let totalBeforeDiscount = 0;
+  let mostExpensiveItem = "";
+  let highPrice = 0;
+
+  for (let product of cart) {
+    totalBeforeDiscount += product.price * product.quantity;
+    if (product.price > highPrice) {
+      highPrice = product.price;
+      mostExpensiveItem = product.item;
+    }
+  }
+  let discountApplied = false;
+  let finalAmount = totalBeforeDiscount;
+  if (totalBeforeDiscount > 100000) {
+    discountApplied = true;
+    finalAmount = totalBeforeDiscount - totalBeforeDiscount * 0.10;
+  }
+  let result={
+    totalBeforeDiscount: totalBeforeDiscount,
+    discountApplied: discountApplied,
+    finalAmount: finalAmount,
+    mostExpensiveItem: mostExpensiveItem
+  };
+    console.log(result); 
+}
+console.log(calculateCart(cart));
+    </script>
+</body>
+</html>
