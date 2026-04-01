@@ -1,59 +1,79 @@
 const http = require("http");
-async function parseJSON(data) {
-  return JSON.parse(data);
+
+function parseJSON(body) {
+  return new Promise((resolve, reject) => {
+    try {
+      const data = JSON.parse(body);
+      resolve(data);
+    } catch (err) {
+      reject("Invalid JSON");
+    }
+  });
 }
 
-async function validateSchema(obj) {
-  if (!obj.name || !obj.age || !obj.email) {
-    throw new Error("Validation failed");
-  }
-  return obj;
+function validateSchema(data) {
+  return new Promise((resolve, reject) => {
+    if (!data.name || !data.age || !data.email) {
+      reject("Missing required fields");
+    } else {
+      resolve(data);
+    }
+  });
 }
 
-async function transformData(obj) {
-  return {
-    name: obj.name.toUpperCase(),
-    age: obj.age,
-    email: "xyz@gmail.com" 
-  };
+function transformData(data) {
+  return new Promise((resolve) => {
+    const transformed = {
+      name: data.name.toUpperCase(),
+      age: data.age,
+      email: "xyz@gmail.com"
+    };
+    resolve(transformed);
+  });
 }
 
-async function buildResponse(obj) {
+function buildResponse(data) {
   return {
     success: true,
-    data: obj
+    data: data
   };
 }
 
-const server = http.createServer(async (req, res) => {
+const server = http.createServer((req, res) => {
+
   if (req.method === "POST" && req.url === "/process") {
+
     let body = "";
 
     req.on("data", chunk => {
-      body += chunk.toString();
+      body += chunk;
     });
 
-    req.on("end", async () => {
-      try {
-        const parsed = await parseJSON(body);
-        const valid = await validateSchema(parsed);
-        const transformed = await transformData(valid);
-        const response = await buildResponse(transformed);
+    req.on("end", () => {
 
-        res.writeHead(200, { "Content-Type": "application/json" });
-        res.end(JSON.stringify(response));
-      } catch (err) {
-        res.writeHead(400, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({ success: false, message: "Invalid data" }));
-      }
+      parseJSON(body)
+        .then(validateSchema)
+        .then(transformData)
+        .then(result => {
+          const response = buildResponse(result);
+
+          res.writeHead(200, { "Content-Type": "application/json" });
+          res.end(JSON.stringify(response));
+        })
+        .catch(err => {
+          res.writeHead(400, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ success: false, error: err }));
+        });
+
     });
 
   } else {
-    res.writeHead(404);
-    res.end("Route not found");
+    res.writeHead(404, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ error: "Not found" }));
   }
+
 });
 
-server.listen(7000, () => {
-  console.log("Server running on http://localhost:7000");
+server.listen(5880, () => {
+  console.log("Server running at http://localhost:5880");
 });
