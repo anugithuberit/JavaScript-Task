@@ -1,17 +1,19 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+
+
 function receiveChunks(req) {
   return new Promise((resolve, reject) => {
-    let data = Buffer.alloc(0);
+    let data = [];
 
     req.on("data", chunk => {
-      data = Buffer.concat([data, chunk]);
+      data.push(chunk);
     });
 
     req.on("end", () => {
-      console.log("Chunks received");
-      resolve(data);
+      const buffer = Buffer.concat(data);
+      resolve(buffer);
     });
 
     req.on("error", reject);
@@ -19,47 +21,40 @@ function receiveChunks(req) {
 }
 
 function validateFile(buffer) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const sizeInMB = buffer.length / (1024 * 1024);
+  const size = buffer.length;
 
-      if (sizeInMB > 1) {
-        return reject("File too large (>1MB)");
-      }
+  if (size > 1024 * 1024) {
+    throw new Error("File too large (max 1MB)");
+  }
 
-      console.log("File validated");
-      resolve(buffer);
-    }, 200);
-  });
+  return size;
 }
 
-function scanFile(buffer) {
+function scanFile() {
   return new Promise(resolve => {
+    console.log("Scanning file...");
     setTimeout(() => {
-      console.log("File scanned (no virus)");
-      resolve(buffer);
+      console.log(" Scan complete");
+      resolve();
     }, 500);
   });
 }
 
 function saveFile(buffer, filename) {
   return new Promise((resolve, reject) => {
-    const filePath = path.join(__dirname, filename);
-
-    fs.writeFile(filePath, buffer, err => {
+    fs.writeFile(filename, buffer, err => {
       if (err) return reject(err);
-
-      console.log("File saved");
-      resolve(filename);
+      resolve();
     });
   });
 }
 
 function generateThumbnail(filename) {
   return new Promise(resolve => {
+    const thumbName = "thumb_" + filename;
+
     setTimeout(() => {
-      const thumbName = "thumb_" + filename;
-      console.log("Thumbnail generated");
+      fs.writeFileSync(thumbName, "thumbnail content"); 
       resolve(thumbName);
     }, 300);
   });
@@ -68,39 +63,40 @@ function generateThumbnail(filename) {
 const server = http.createServer(async (req, res) => {
   if (req.method === "POST" && req.url === "/upload") {
     try {
-      
+      console.log("Receiving file...");
+
       const buffer = await receiveChunks(req);
-      await validateFile(buffer);
-      await scanFile(buffer);
+      const size = validateFile(buffer);
+
+      await scanFile();
+
       const filename = "photo.jpg";
-    
-      const [savedFile, thumbnail] = await Promise.all([
+
+      const [_, thumbnail] = await Promise.all([
         saveFile(buffer, filename),
         generateThumbnail(filename)
       ]);
 
-      const sizeKB = Math.round(buffer.length / 1024);
-
       const response = {
         success: true,
-        filename: savedFile,
-        size: `${sizeKB}KB`,
+        filename: filename,
+        size: Math.round(size / 1024) + "KB",
         thumbnail: thumbnail
       };
 
       res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify(response, null, 2));
+      res.end(JSON.stringify(response));
 
     } catch (err) {
       res.writeHead(400, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ error: err.toString() }));
+      res.end(JSON.stringify({ error: err.message }));
     }
+
   } else {
-    res.writeHead(404);
-    res.end("Not Found");
+    res.writeHead(404, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ error: "Not found" }));
   }
 });
-
-server.listen(12000, () => {
-  console.log("Server running at http://localhost:12000");
+server.listen(7000, () => {
+  console.log(" Server running at http://localhost:7000");
 });
