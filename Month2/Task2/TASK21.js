@@ -1,20 +1,20 @@
 const http = require("http");
 
+const PORT = 9000;
+
 function getUsers() {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve(["Arun", "Priya", "Kiran"]);
-      
     }, 500);
   });
 }
 
-// Async function: getOrders
 function getOrders() {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve([101, 102, 103, 104]);
-    }, 500);
+    }, 400);
   });
 }
 
@@ -23,7 +23,6 @@ const server = http.createServer(async (req, res) => {
 
   if (req.method === "GET" && req.url === "/summary") {
     try {
-     
       const [users, orders] = await Promise.all([
         getUsers(),
         getOrders()
@@ -38,9 +37,10 @@ const server = http.createServer(async (req, res) => {
 
       res.writeHead(200);
       res.end(JSON.stringify(response));
+
     } catch (error) {
       res.writeHead(500);
-      res.end(JSON.stringify({ error: "Internal Server Error" }));
+      res.end(JSON.stringify({ error: "Failed to fetch data" }));
     }
   } else {
     res.writeHead(404);
@@ -48,6 +48,6 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(4800, () => {
-  console.log("Server running at http://localhost:4800");
+server.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
